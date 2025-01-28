@@ -120,7 +120,7 @@ const containerGroup = new containerinstance.ContainerGroup(
       ],
       ipAddress: {
         type: containerinstance.ContainerGroupIpAddressType.Public,
-        dnsNameLabel: `${imageName}`,
+        dnsNameLabel: pulumi.interpolate`${imageName}-${pulumi.getStack()}-${Math.random().toString(36).substr(2, 5)}`,
         ports: [
           {
             port: publicPort,
